@@ -1,0 +1,62 @@
+AppBundle\Entity\Entry:
+    type: entity
+    table: entry
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        type:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        publishedDate:
+            type: string
+            nullable: true
+            column: published_date
+        avaiableDate:
+            type: string
+            nullable: true
+            column: avaiable_date
+    manyToMany:
+        category:
+            targetEntity: Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: entry
+            joinTable:
+                name: entry_category
+                joinColumns:
+                    -
+                        name: entry_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: category_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,46 @@
+AppBundle\Entity\Metadata:
+    type: entity
+    table: metadata
+    indexes:
+        fk_metadata_entry1_idx:
+            columns:
+                - entry_id
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        value:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: ' name'
+    manyToOne:
+        entry:
+            targetEntity: Entry
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entry_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

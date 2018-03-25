@@ -1,0 +1,68 @@
+AppBundle\Entity\Content:
+    type: entity
+    table: content
+    indexes:
+        fk_content_entry1_idx:
+            columns:
+                - entry_id
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        url:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        format:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        width:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        height:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        language:
+            type: string
+            nullable: true
+            length: 4
+            options:
+                fixed: false
+        duration:
+            type: time
+            nullable: true
+        geoLock:
+            type: boolean
+            nullable: true
+            column: geo_lock
+    manyToOne:
+        entry:
+            targetEntity: Entry
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entry_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
