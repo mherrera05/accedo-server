@@ -110,4 +110,3 @@ class Credit
         return $this->entry;
     }
 }
-

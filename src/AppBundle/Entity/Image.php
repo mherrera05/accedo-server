@@ -168,4 +168,3 @@ class Image
         return $this->entry;
     }
 }
-

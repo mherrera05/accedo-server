@@ -255,4 +255,3 @@ class Content
         return $this->entry;
     }
 }
-

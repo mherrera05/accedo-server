@@ -110,4 +110,3 @@ class Metadata
         return $this->entry;
     }
 }
-

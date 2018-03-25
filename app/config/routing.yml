@@ -1,3 +1,4 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+api_movies:
+  resource: '@AppBundle/Controller/MovieController.php'
+  type: rest
+  prefix: /api

@@ -2,11 +2,20 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Exclude;
+
 /**
- * Entry
+ * @ORM\Entity
+ * @ExclusionPolicy("none")
  */
 class Entry
 {
+    const TYPE_MOVIE = 1;
+
     /**
      * @var string
      */
@@ -26,16 +35,6 @@ class Entry
      * @var integer
      */
     private $type;
-
-    /**
-     * @var \DateTime
-     */
-    private $publishedDate;
-
-    /**
-     * @var \DateTime
-     */
-    private $avaiableDate;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -133,54 +132,6 @@ class Entry
     }
 
     /**
-     * Set publishedDate
-     *
-     * @param \DateTime $publishedDate
-     *
-     * @return Entry
-     */
-    public function setPublishedDate($publishedDate)
-    {
-        $this->publishedDate = $publishedDate;
-
-        return $this;
-    }
-
-    /**
-     * Get publishedDate
-     *
-     * @return \DateTime
-     */
-    public function getPublishedDate()
-    {
-        return $this->publishedDate;
-    }
-
-    /**
-     * Set avaiableDate
-     *
-     * @param \DateTime $avaiableDate
-     *
-     * @return Entry
-     */
-    public function setAvaiableDate($avaiableDate)
-    {
-        $this->avaiableDate = $avaiableDate;
-
-        return $this;
-    }
-
-    /**
-     * Get avaiableDate
-     *
-     * @return \DateTime
-     */
-    public function getAvaiableDate()
-    {
-        return $this->avaiableDate;
-    }
-
-    /**
      * Add category
      *
      * @param \AppBundle\Entity\Category $category
@@ -213,5 +164,62 @@ class Entry
     {
         return $this->category;
     }
-}
+    /**
+     * @var string
+     */
+    private $publishedDate;
 
+    /**
+     * @var string
+     */
+    private $avaiableDate;
+
+
+    /**
+     * Set publishedDate
+     *
+     * @param string $publishedDate
+     *
+     * @return Entry
+     */
+    public function setPublishedDate($publishedDate)
+    {
+        $this->publishedDate = $publishedDate;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedDate
+     *
+     * @return string
+     */
+    public function getPublishedDate()
+    {
+        return $this->publishedDate;
+    }
+
+    /**
+     * Set avaiableDate
+     *
+     * @param string $avaiableDate
+     *
+     * @return Entry
+     */
+    public function setAvaiableDate($avaiableDate)
+    {
+        $this->avaiableDate = $avaiableDate;
+
+        return $this;
+    }
+
+    /**
+     * Get avaiableDate
+     *
+     * @return string
+     */
+    public function getAvaiableDate()
+    {
+        return $this->avaiableDate;
+    }
+}

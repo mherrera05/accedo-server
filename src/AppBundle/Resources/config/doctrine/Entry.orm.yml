@@ -34,11 +34,11 @@ AppBundle\Entity\Entry:
             options:
                 unsigned: false
         publishedDate:
-            type: datetime
+            type: string
             nullable: true
             column: published_date
         avaiableDate:
-            type: datetime
+            type: string
             nullable: true
             column: avaiable_date
     manyToMany:

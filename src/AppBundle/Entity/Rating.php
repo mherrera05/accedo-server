@@ -110,4 +110,3 @@ class Rating
         return $this->entry;
     }
 }
-
