@@ -1,0 +1,41 @@
+AppBundle\Entity\Credit:
+    type: entity
+    table: credit
+    indexes:
+        fk_credit_entry1_idx:
+            columns:
+                - entry_id
+    id:
+        id:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        role:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+        name:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+    manyToOne:
+        entry:
+            targetEntity: Entry
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entry_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,55 @@
+AppBundle\Entity\Image:
+    type: entity
+    table: image
+    indexes:
+        fk_image_entry_idx:
+            columns:
+                - entry_id
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        type:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        url:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        width:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        height:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        entry:
+            targetEntity: Entry
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entry_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
