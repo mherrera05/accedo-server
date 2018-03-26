@@ -1,10 +1,6 @@
-AppBundle\Entity\Metadata:
+AppBundle\Entity\History:
     type: entity
-    table: metadata
-    indexes:
-        fk_metadata_entry1_idx:
-            columns:
-                - entry_id
+    table: history
     uniqueConstraints:
         id_UNIQUE:
             columns:
@@ -19,28 +15,33 @@ AppBundle\Entity\Metadata:
             generator:
                 strategy: IDENTITY
     fields:
-        value:
+        title:
             type: string
             nullable: true
-            length: 60
+            length: 255
             options:
                 fixed: false
-        name:
+        content:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        image:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        resourceid:
             type: string
             nullable: true
-            length: 60
+            length: 255
             options:
                 fixed: false
-            column: ' name'
-    manyToOne:
-        entry:
-            targetEntity: Entry
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                entry_id:
-                    referencedColumnName: id
-            orphanRemoval: false
+            column: resourceId
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
     lifecycleCallbacks: {  }
