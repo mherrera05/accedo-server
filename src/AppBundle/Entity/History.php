@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * History
  */
@@ -167,5 +169,13 @@ class History
     {
         return $this->createdAt;
     }
-}
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreation()
+    {
+        $now = new \DateTime("now");
+        $this->createdAt = $now;
+    }
+}

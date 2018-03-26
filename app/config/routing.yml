@@ -1,4 +1,4 @@
 api_movies:
-  resource: '@AppBundle/Controller/MovieController.php'
+  resource: '@AppBundle/Controller/HistoryController.php'
   type: rest
   prefix: /api

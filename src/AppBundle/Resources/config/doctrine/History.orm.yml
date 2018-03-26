@@ -44,4 +44,5 @@ AppBundle\Entity\History:
             type: datetime
             nullable: true
             column: created_at
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [setCreation]
