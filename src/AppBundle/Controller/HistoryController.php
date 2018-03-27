@@ -56,7 +56,7 @@ class HistoryController extends Controller
         $history
             ->setTitle($request->get("title"))
             ->setContent($request->get("content"))
-            ->setImage($request->get("images"))
+            ->setImage($request->get("image"))
             ->setResourceId($request->get("id"))
         ;
 

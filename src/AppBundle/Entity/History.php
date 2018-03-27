@@ -167,7 +167,7 @@ class History
      */
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->createdAt->format("Y-m-d");
     }
 
     /**
