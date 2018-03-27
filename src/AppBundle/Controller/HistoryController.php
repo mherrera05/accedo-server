@@ -32,8 +32,10 @@ class HistoryController extends Controller
     {
         $histories = $this->getDoctrine()
             ->getRepository('AppBundle:History')
-            ->findAll();
-
+            ->findBy(
+                array(),
+                array('createdAt' => 'DESC')
+            );
         return View::create($histories, 200);
     }
 

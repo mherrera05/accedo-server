@@ -1,72 +1,56 @@
-Symfony Standard Edition
-========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+# Accedo Application Server
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+This is a server application to create two endpoint of a webservice to register adn request user history from a Accedo Client Application.
 
-What's inside?
---------------
 
-The Symfony Standard Edition is configured with the following defaults:
+# Requirements
 
-  * An AppBundle you can use to start coding;
+ * PHP `7.1`
+ * MySQL Server
 
-  * Twig as the only configured template engine;
+# Installation & Usage
+This is an application build with Symfony, you can install it via composer.
 
-  * Doctrine ORM/DBAL;
+## Installation
 
-  * Swiftmailer;
+### Step 1: Clone the project
 
-  * Annotations enabled for everything.
+Open a command console, clone the project using git.
 
-It comes pre-configured with the following bundles:
+```console
+$ git clone https://github.com/mherrera05/accedo-server.git <folder-name>
+```
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+This project lives in a public repository.
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+### Step 2: Install depency via composer
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+Enter in your project directory and execute the following command to install dependencies:
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+```console
+$ composer install
+```
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+This command requires you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+### Step 3: Create Schema
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+Having a database for this project and settep up in parameters.yml, just run the following command to create de schema in database:
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+```console
+$ php bin/console doctrine:schema:create
+```
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
+### Step 4: Access to folder
 
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
+Do not forget give access to `/cache` and `/logs` folder for `www-data` user.
 
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
+```console
+sudo setfacl -R -m u:www-data:rwx var/cache var/log
+sudo setfacl -dR -m u:www-data:rwx var/cache var/log
+```
 
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
+### Step 5: Enable your site in Apache
 
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+Last step is create your virtual host pointing to the server and request by explorer
