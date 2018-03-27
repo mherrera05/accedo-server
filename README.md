@@ -47,8 +47,8 @@ $ php bin/console doctrine:schema:create
 Do not forget give access to `/cache` and `/logs` folder for `www-data` user.
 
 ```console
-sudo setfacl -R -m u:www-data:rwx var/cache var/log
-sudo setfacl -dR -m u:www-data:rwx var/cache var/log
+sudo setfacl -R -m u:www-data:rwx var/cache var/logs var/sessions
+sudo setfacl -dR -m u:www-data:rwx var/cache var/logs var/sessions
 ```
 
 ### Step 5: Enable your site in Apache
